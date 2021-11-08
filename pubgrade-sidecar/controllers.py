@@ -7,7 +7,7 @@ import re
 
 
 from flask import (current_app, request)
-from werkzeug.exceptions import InternalServerError, NotFound
+from werkzeug.exceptions import InternalServerError, NotFound, Unauthorized
 import yaml
 from git import Repo
 import json
@@ -38,6 +38,12 @@ def getDeployment():
 
 
 def getImage(deployment_name: str):
+        access_token = current_app.config['FOCA'].environments['secrets']['access_token']
+        x_access_token = request.headers['X-Access-Token']
+
+        if access_token != x_access_token:
+                raise Unauthorized
+
         deployments = apiV1.list_namespaced_deployment(namespace)
         for deployment in deployments.items:
             if deployment.metadata.name == deployment_name:
@@ -46,6 +52,12 @@ def getImage(deployment_name: str):
 
 
 def deleteDeployment(deployment_name: str):
+        access_token = current_app.config['FOCA'].environments['secrets']['access_token']
+        x_access_token = request.headers['X-Access-Token']
+
+        if access_token != x_access_token:
+                raise Unauthorized
+
         api_instance = client.CoreV1Api()
         body = client.V1DeleteOptions()
         api_response = api_instance.delete_namespaced_pod(deployment_name, namespace)
@@ -57,6 +69,12 @@ def postDeployment():
 
 
 def updateDeployment(deployment_name: str):
+        access_token = current_app.config['FOCA'].environments['secrets']['access_token']
+        x_access_token = request.headers['X-Access-Token']
+
+        if access_token != x_access_token:
+                raise Unauthorized
+
         image = request.json['image_name']
         old_image = getImage(deployment_name)
 
