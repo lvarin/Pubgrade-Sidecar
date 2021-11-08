@@ -1,7 +1,7 @@
 serviceaccountname: pod-executer
 appname: pubgrade-sidecar
-imagename: akash7778/k8-updater
-containerport: 5000
+imagename: akash7778/pubgrade-sidecar
+containerport: 8080
 nodeport: 30003
 secret: Akash@123
 clusterType: "openshift"
