@@ -1,6 +1,10 @@
 # Pubgrade-Sidecar
 
-A microservice which would be co-deployed alongside [pubgrade][pubgrade] to listen for update notifications from [pubgrade][pubgrade] and update the subscribed service accordingly. The microservice is named as sidecar as it would be co-deployed with the service of interest (service registered for updates at pubgrade) in cloud native infrastructure at deployment side.
+A microservice which would be co-deployed alongside [pubgrade][pubgrade] to 
+listen for update notifications from [pubgrade][pubgrade] and update the 
+subscribed service accordingly. The microservice is named as sidecar as it 
+would be co-deployed with the service of interest (service registered for 
+updates at pubgrade) in cloud native infrastructure at deployment side.
 
 > **_NOTE:_**  Project is still under development.
 
@@ -10,7 +14,8 @@ A microservice which would be co-deployed alongside [pubgrade][pubgrade] to list
 2. Install Helm.
 3. Modify deployment/values.yaml.
 4. Create a namespace, e.g., with kubectl create namespace production
-5. Create a deployment using Helm with helm install pubgrade-sidecar deployment/ -n production
+5. Create a deployment using Helm with 
+  `helm install pubgrade-sidecar deployment/ -n production`
 
 ## Usage
 
@@ -21,13 +26,15 @@ A microservice which would be co-deployed alongside [pubgrade][pubgrade] to list
 
 - Get current image of the deployment.
 ```bash
-curl --location --request GET 'http://{pubgrade-sidecar-url}/deployment/{deployment-name}' \
+curl --location --request GET 'http://{pubgrade-sidecar-url}/deployment/
+{deployment-name}' \
 --header 'X-Access-Token: {access-token (specified at config.yaml)}'
 ```
 
 - Modify image tag of the deployment.
 ```bash
-curl --location --request PUT 'http://{pubgrade-sidecar-url}/deployment/{deployment-name}' \
+curl --location --request PUT 'http://{pubgrade-sidecar-url}/deployment/
+{deployment-name}' \
 --header 'X-Access-Token: {access-token (specified at config.yaml)}' \
 --header 'Content-Type: application/json' \
 --data-raw '{

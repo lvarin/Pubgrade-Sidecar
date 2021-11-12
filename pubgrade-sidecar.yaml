@@ -3,12 +3,18 @@ info:
   title: 'Sidecar service to update deployment on k8s-cluster  '
   version: 1.0.0
   description: |
-    The project is to implement a microservice which would be co-deployed along with pubgrade (i.e. an open-source decoupled, publish-subscribe-based CI/CD solution that sits between CI and CD that allows developers to notify deployments of available updates) in Kubernetes to listen for update notifications from pubgrade and update the subscribed service accordingly.
+    The project is to implement a microservice which would be co-deployed
+    along with pubgrade (i.e. an open-source decoupled,
+    publish-subscribe-based CI/CD solution that sits between CI and CD that
+    allows developers to notify deployments of available updates) in
+    Kubernetes to listen for update notifications from pubgrade and update
+    the subscribed service accordingly.
 paths:
   /deployment:
     # post:
     #   summary: 'Register new deployment'
-    #   description: Create new deployment on the cluster. Deployment can also be created manually.
+    #   description: Create new deployment on the cluster. Deployment can
+#    also be created manually.
     #   operationId: postDeployment
     #   tags:
     #     - deployment
