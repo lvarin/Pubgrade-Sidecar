@@ -45,11 +45,12 @@ def getImage(deployment_name: str):
         if access_token != x_access_token:
                 raise Unauthorized
 
-        deployments = apiV1.list_namespaced_deployment(namespace)
-        for deployment in deployments.items:
-            if deployment.metadata.name == deployment_name:
+        try:
+                deployment = apiV1.read_namespaced_deployment(deployment_name, \
+                                                                  namespace)
                 return deployment.spec.template.spec.containers[0].image
-        return None
+        except Exception:
+                raise NotFound
 
 
 def deleteDeployment(deployment_name: str):
@@ -65,10 +66,10 @@ def deleteDeployment(deployment_name: str):
         api_response = api_instance.delete_namespaced_pod(deployment_name,
                                                           namespace)
         return "deleted: " + deployment_name + "  " + api_response
-
-
-def postDeployment():
-    return "postDeployment"
+#
+#
+# def postDeployment():
+#     return "postDeployment"
 
 
 def updateDeployment(deployment_name: str):
@@ -80,8 +81,9 @@ def updateDeployment(deployment_name: str):
                 raise Unauthorized
 
         image = request.json['image_name']
+        image_tag = request.json['tag']
         old_image = getImage(deployment_name)
-
+        image = image + ':' + image_tag
         if re.split(":", old_image)[0] != re.split(":", image)[0]:
             return "Cannot change image, only tag"
 

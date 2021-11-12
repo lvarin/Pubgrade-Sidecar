@@ -40,7 +40,8 @@ paths:
     #         application/json:
     #           schema:
     #             type: string
-    #             description: 'The deployment was successfully created with this `deployment_id`'
+    #             description: 'The deployment was successfully created with
+#    this `deployment_id`'
     #             example: 'deploy_123'
     #     '400':
     #       $ref: '#/components/responses/BadRequest'
