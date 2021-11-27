@@ -2,5 +2,5 @@
 from foca.foca import foca
 
 if __name__ == '__main__':
-    app = foca("config.yaml")
+    app = foca("config/config.yaml")
     app.run()

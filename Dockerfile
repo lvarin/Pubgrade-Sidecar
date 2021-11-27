@@ -10,4 +10,4 @@ RUN cd /app \
     && pip install kubernetes \
     && pip install gitpython
 
-CMD ["bash", "-c", "cd /app; python app.py"]
+CMD ["bash", "-c", "cd /app/app; python app.py"]

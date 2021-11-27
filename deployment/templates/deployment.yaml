@@ -25,4 +25,3 @@ spec:
            value: {{ .Release.Namespace }}
          - name: SECRET_UUID
            value: {{ .Values.secret }}
-

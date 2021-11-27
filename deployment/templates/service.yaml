@@ -9,4 +9,3 @@ spec:
   ports:
     - port: {{ .Values.containerport }}
       targetPort: {{ .Values.containerport }}
-      nodePort: {{ .Values.nodeport }}
