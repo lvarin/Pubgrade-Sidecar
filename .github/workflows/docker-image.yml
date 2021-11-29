@@ -20,4 +20,4 @@ jobs:
         username: ${{ secrets.DOCKER_USER }}
         password: ${{ secrets.DOCKER_TOKEN }}
     - name: Build and Push the Docker image
-      run: docker buildx build . --file Dockerfile --tag ${{ secrets.DOCKER_REGISTRY }}/lvarin/pubgrade-sidecar:$(date +%Y%m%d-%H%M%S) --push
+      run: docker buildx build . --file Dockerfile --tag ${{ secrets.DOCKER_REGISTRY }}/lvarin/pubgrade-sidecar:$(date +%Y%m%d%H%M%S) --push
