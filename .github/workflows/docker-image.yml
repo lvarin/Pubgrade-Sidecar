@@ -15,4 +15,4 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build and Push the Docker image
-      run: docker build . --file Dockerfile --tag lvarin/pubgrade-sidecar:$(date +%Y%m%d-%H%M%S) --push
+      run: docker buildx build . --file Dockerfile --tag lvarin/pubgrade-sidecar:$(date +%Y%m%d-%H%M%S) --push
