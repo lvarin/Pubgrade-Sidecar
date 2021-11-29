@@ -9,6 +9,7 @@ server:
 api:
     specs:
         - path: api/pubgrade-sidecar.yaml
+          path_out: /app/app/config/pubgrade-sidecar.modified.yaml
           append: null
           add_operation_fields:
               x-openapi-router-controller:  pubgrade-sidecar.controllers
